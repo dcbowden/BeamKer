@@ -1,0 +1,70 @@
+\chapter{Task descriptions}
+
+This chapter is split in two parts: The first one is about computations using actual random wavefields, excited by sources with random phase. This includes, for instance, the computation of correlation functions by summing (processed) correlations for many time windows, and the computation of source and propagation correctors. The second part is about deterministic computations based on correlation wavefields excited by a deterministic power-spectral density distribution of sources. This includes the computation of ensemble correlations and sensitivity kernels.
+
+%====================================================================
+\section{Random wavefield computations}
+%====================================================================
+
+%====================================================================
+\subsection{Computing inter-station correlations from random wavefields}
+
+The function \texttt{correlation\_random} computes raw and processed correlation functions through the summation of correlations for individual time windows. The individual time window correlations are computed by modelling a wavefield excited by sources with random phase.\\[5pt]
+%
+In the \texttt{setup.txt} file, the source distribution can be set via the parameter \texttt{type}. It can be visualised using the functions contained in \texttt{source.py}. The processing applied to the raw synthetics or raw correlations is speficied in \texttt{processing.txt}. The input file \texttt{ensemble\_correlation.txt} contains the length of the individual time windows \texttt{Twindow} and the number of time windows \texttt{Nwindow}. To ensure reproducibility of the random simulations, the random seed can be specified via the parameter \texttt{seed}. It can be any integer number.\\[5pt]
+%
+Transient, deterministic sources mimicking earthquakes may be added by editing the input file\\ \texttt{earthquake\_catalogue.txt}.\\[5pt]
+%
+Output in the form of individual correlation functions, i.e. for the individual time windows, is written to \texttt{OUTPUT/correlations\_individual/}. This is needed for the computation of effective correlations using \texttt{correlation\_effective} (see below).
+
+%====================================================================
+\subsection{Computing source and propagation correctors}
+
+Source and propagation correctors for synthetic correlations can be computed with \texttt{correction\_factors}, which calls \texttt{correlation\_random}. When the parameter \texttt{save} is set to \texttt{True}, the correction factors are saved to \texttt{OUTPUT/correctors}, and the ensemble correlations for all station pairs are saved to\\
+ \texttt{OUTPUT/correlations}.
+ 
+%====================================================================
+\subsection{Computing effective correlations}
+
+After computing and storing correlations for individual time windows with \texttt{correlations\_random} and correction factors with \texttt{correction\_factors}, effective correlations can be computed with\\
+\texttt{correlation\_effective}. When the parameter \texttt{save} is set to \texttt{True}, the effective correlations are saved to \texttt{OUTPUT/correlations}.
+
+%====================================================================
+\subsection{Plotting source and propagation correctors}
+
+The source file \texttt{PLOT/correctors.py} contains various functions to plot source correctors (\texttt{source}), propagation correctors (\texttt{propagation}) and the frequency-dependent geometric spreading of the effective Green function (\texttt{geometric\_spreading}). This assumes that correctors have previously been computed and stored.
+
+%====================================================================
+\subsection{Plotting raw, processed and effective correlations}
+
+Provided that these have been computed, \texttt{PLOT/correlations.py} can be used to visualise raw, processed and effective correlations.
+
+%====================================================================
+\subsection{Plotting the spatial and temporal distribution of earthquakes}
+
+This can be done using \texttt{PLOT/earthquakes.py}.
+
+%====================================================================
+\section{Deterministic wavefield computations}
+%====================================================================
+
+%====================================================================
+\subsection{Computing inter-station correlation functions for a given power-spectral density distribution}
+
+To compute an inter-station correlation function, run \texttt{correlation\_function.py}. It requires input from \texttt{setup.txt}, \texttt{correlation\_field\_and\_kernels.txt}, \texttt{receivers.txt}, and \texttt{processing.txt} in case the bandpass is used for the natural source spectrum or the instrument response. The function returns the time- and frequency-domain correlation functions, and plots them when the parameter \texttt{plot} is set to \texttt{True}.
+
+%====================================================================
+\subsection{Computing snapshots and movies of the interferometric wavefield}
+
+The code \texttt{correlation\_field.py} contains two functions: \texttt{snapshot} to compute the interferometric wavefield for a specific time, and \texttt{movie} to save .png files for a sequence of snapshots.\\[5pt]
+%
+Both functions read input from the same files as \texttt{correlation\_function.py}, described above. To speed up computations, \texttt{snapshot} uses a very simplistic multi-grid method. In the first stage, the wavefield is computed only on a coarse grid, e.g. every $5$ grid points when the parameter \texttt{mg\_level} is set to \texttt{5}. In the second stage, the remaining grid points around the previously visited grid points are filled up, provided that the wavefield on the coarse-grid point is larger than \texttt{mg\_tol} times the maximum on the coarse grid. \texttt{snapshot} returns the wavefield snapshot. The snapshot can be plotted and saved when the parameters \texttt{plot} and \texttt{save} are set to \texttt{True}, respectively.\\[5pt]
+%
+The function \texttt{movie} operates similar to \texttt{snapshot}, the only difference being that it does not employ a multi-grid method. Internally, \texttt{movie} computes a three-dimensional array containing the wavefield for all the snapshot times provided in the input array \texttt{time\_axis}. This means that the function is rather slow, and it requires large memory. So, be a bit careful.
+
+%====================================================================
+\subsection{Computing source kernels}
+
+Before computing Fr\'{e}chet kernels for sources, a time-domain correlation function must be computed by running \texttt{correlation\_function.py} (see above). The time-domain correlation and the time axis are input for the function \texttt{source\_kernel} in \texttt{kernels.py}. The former computes and plots a source kernel for the measurement windows defined in the input file \texttt{windows.txt}.\\[5pt]
+%
+Internally, \texttt{source\_kernel} first computes the frequency-domain adjoint source for a specific type of measurement by calling \texttt{adsrc.py}. The adjoint source then acts as a frequency-domain multiplier with a product of two Green functions. The kernel is then computed by integrating over all frequencies, which is equivalent to assuming that the power-spectral density of the sources is frequency-independent, i.e. only dependent on the space coordinate.

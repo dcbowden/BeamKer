@@ -1,0 +1,84 @@
+
+\documentclass[graybox,envcountchap,sectrefs]{svmono}
+
+\usepackage{mathptmx}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{type1cm}
+\usepackage{makeidx}   
+\usepackage{graphicx}     
+                            
+\usepackage{multicol}     
+\usepackage[bottom]{footmisc}
+
+\usepackage{amsmath, amssymb, graphicx, graphics, float}
+\usepackage{rotating}
+\usepackage{sidecap}
+
+\usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
+
+\newcommand{\w}{\mathbf}
+\newcommand{\s}{\boldsymbol}
+\newcommand{\dd}[1][n]{\left[\left[{#1}\right]\right]_{-}^{+}}
+
+\newcommand{\delln}{\dot{\ell}^{(N)}}
+\newcommand{\dell}{\dot{\ell}}
+\newcommand{\elln}{\ell^{(N)}}
+
+\newcommand{\vpv}{v_\text{\tiny{PV}}}
+\newcommand{\vph}{v_\text{\tiny{PH}}}
+\newcommand{\vsv}{v_\text{\tiny{SV}}}
+\newcommand{\vsh}{v_\text{\tiny{SH}}}
+\newcommand{\vp}{v_\text{\tiny{P}}}
+\newcommand{\vs}{v_\text{\tiny{S}}}
+\newcommand{\xis}{\xi_\text{\tiny{S}}}
+\newcommand{\xip}{\xi_\text{\tiny{P}}}
+\newcommand{\vpi}{\bar{v}_\text{\tiny{P}}}
+\newcommand{\vsi}{\bar{v}_\text{\tiny{S}}}
+\newcommand{\tr}{\text{tr}\,}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tu}{\tilde{u}_i}
+\newcommand{\sign}{\text{sign\,}}
+\newcommand{\p}{\partial}
+
+\newcommand{\bpsi}{\bar{\psi}}
+\newcommand{\bphi}{\bar{\phi}}
+
+\newcommand{\n}{\,{_n\!}}
+\newcommand{\m}{\,{_m\!}}
+\newcommand{\pp}{\,{_p\!}}
+\newcommand{\obs}{\,{^o\!}}
+\newcommand{\nobs}{\,{^o_n\!}}
+
+\newcommand{\GI}{\texttt{GI}$\,$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{ 	\Huge{\textbf{GI} version 0.2}\\[10pt] 
+	\large{Documentation}\\[100pt]
+	\LARGE{Andreas Fichtner}\\[5pt] 
+	\normalsize{Department of Earth Sciences, ETH Zurich, Switzerland}\\[15pt]
+	\normalsize{} }
+
+\maketitle
+
+\frontmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+
+\include{foreword}
+
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%- code description %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{01_structure}
+\include{02_input}  
+\include{03_tasks}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

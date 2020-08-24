@@ -1,0 +1,8 @@
+#- Number of earthquakes. -----------------------
+Neq=0
+
+#- Earthquake position, amplitude, timing -------
+t0=50.0
+x0=3.8e4
+y0=3.8e4
+m0=1.5e9

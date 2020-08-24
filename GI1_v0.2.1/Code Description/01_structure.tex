@@ -1,0 +1,36 @@
+\chapter{Structure and functionality of the programme package}
+
+%====================================================================
+\section{Programming language and packages}
+
+\GI version 0.2 is written entirely in Python 3. This language was chosen in order to ensure that (i) no commercial software is needed, and (ii) also relatively unexperienced programmers can modify the code and adapt it to their needs. Clearly, \GI is not designed to be highly performant. The following standard Python packages are needed to run \GI: matplotlib, numpy, time.
+
+%====================================================================
+% Structure
+%====================================================================
+
+\section{Directory structure and basic functionality}
+
+Most of the code, in the form of Python programmes, is located directly in the main directory. The following is a list of codes with a very brief description of their purpose:
+\begin{enumerate}
+\item \texttt{correlation\_function.py}: Compute and plot an inter-station correlation function based on the power-spectral density ditribution of the sources.\\
+\item \texttt{correlation\_field.py}: Compute snapshots of the correlation wavefield for specific times or make a movie from a sequence of snapshots.\\
+\item \texttt{source.py}: Compute and plot the spatial and frequency distributions of the sources.\\
+\item \texttt{green.py}: The 2D Green function for a homogeneous, acoustic full space.\\
+\item \texttt{correlation\_random.py}: Compute inter-station correlations based on the summation of random wavefields.\\
+\item \texttt{processing.py}: Apply various processing schemes during the computation of correlations based on random wavefields.\\
+\item \texttt{correction\_factors.py}: Compute source and propagation correctors for a specific processing scheme.\\
+\item \texttt{correlation\_effective.py}: Compute the effective correlation function based on previously computed source and propagation correctors.\\
+\item \texttt{kernels.py}: Compute Fr\'{e}chet kernels for sources and structure.\\
+\item \texttt{adsrc.py}: Compute a frequency-domain adjoint source needed for the computation of Fr\'{e}chet kernels.
+\end{enumerate}
+%
+The directory \texttt{PLOT} contains several pieces of code to visualise output written by some of the codes mentioned above. A brief listing:
+\begin{enumerate}
+\item \texttt{correctors.py}: Plot source and propagation correctors.\\
+\item \texttt{correlations.py}: Plot raw, processed and effective correlation functions.\\
+\item \texttt{earthquakes.py}: Plot the spatial and temporal distribution of the transient, point-localised sources (acoustic `earthquakes').
+\end{enumerate}
+%
+All output is written to the \texttt{OUTPUT} directory. \GI is not very flexible here, just to keep the code as simple as possible.
+

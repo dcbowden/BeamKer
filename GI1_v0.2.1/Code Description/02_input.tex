@@ -1,0 +1,53 @@
+\chapter{Input files}
+
+%====================================================================
+% Input files
+%====================================================================
+
+All input files are located in the directory \texttt{INPUT}. The following is a brief description of their content.
+
+%====================================================================
+\section{\texttt{setup.txt}}
+
+This file contains the basic geometric setup, the medium properties and the properties of the sources. The variables \texttt{xmin}, \texttt{xmax} and \texttt{dx} are the boundaries of the computational domain in $x$-direction in km and the grid point spacing  in km, respectively.  The variables \texttt{ymin}, \texttt{ymax} and \texttt{dy} are the same in $y$-direction. The grid spacing should be sufficiently fine to ensure that space integrals are approximated accurately. \GI does not check if the spacing fine enough.\\[5pt]
+%
+The acoustic medium is described in terms of its density \texttt{rho} [kg$/$m$^3$], velocity \texttt{v} [m$/$s], and $Q$.\\[5pt]
+%
+The spatial source distribution is given by the parameter \texttt{type}. The various options are listed in the function \texttt{space\_distribution} in the source code \texttt{source.py}. The natural source spectrum (e.g. the spectrum of the noise sources) \texttt{natural} and the instrument response \texttt{instrument} are implemented in the function \texttt{frequency\_distribution}, also in the source code \texttt{source.py}. Possible values for these parameters are listed there. New options are likely to be added from time to time.
+
+%====================================================================
+\section{\texttt{receivers.txt}}
+
+The number of positions of the receivers in km are listed in this input file. As in all other input files, the format of this file is not allowed to change. Specifically, blank lines should neither be added or deleted.
+
+%====================================================================
+\section{\texttt{correlation\_field\_and\_kernels.txt}}
+
+This file contains parameters needed for the computation of correlation functions and sensitivity kernels based on the power-spectral density distribution of the sources. The frequency band [Hz] extends from \texttt{fmin}-\texttt{fwidth} to \texttt{fmax}+\texttt{fwidth}, where \texttt{fwidth} is the width of the taper that drops off linearly for frequencies lower than \texttt{fmin} and higher than \texttt{fmax}. The frequency increment used in the inverse Fourier transforms is given by \texttt{df}.It is up to the user to choose \texttt{df} sufficiently small.\\[5pt]
+%
+The time variables \texttt{tmin}, \texttt{tmax} and \texttt{dt} denote the minimum and maximum times after the inverse Fourier transform. The time increment is \texttt{dt}.
+
+%====================================================================
+\section{\texttt{ensemble\_correlation.txt}}
+
+This input file contains parameters describing the computation of correlation functions based on a random wavefield, i.e. via the explicit computation of (noise) traces originating from sources with random phase. This task is performed by the programme code \texttt{correlation\_random.py}. The input parameter \texttt{Nwindows} is the number of time windows. Inter-station correlations for these individual time windows are averaged to form the final ensemble correlation. \texttt{Twindows} is the length of these windows in s.\\[5pt]
+%
+As mentioned above, the random wavefield is excited by sources with random phase. Thus, in principle, each realisation is different. To ensure repeatability, as specific \texttt{seed} for the random number generator can be chosen. This can be any integer number. Using the same seed will produce the same results. 
+
+%====================================================================
+\section{\texttt{earthquake\_catalogue.txt}}
+
+In the computation of correlations based on the actual random wavefield, performed by \texttt{correlation\_random.py}, transient deterministic sources, i.e. earthquake equivalents, may be added. This input file lists the number of earthquakes (\texttt{Neq}), their origin time in s (\texttt{t*}), $x$- and $y$-coordinates (\texttt{x*}, \texttt{y*}) in km, and source strength (\texttt{m*}) in N$^2$s$/$m$^6$. 
+
+%====================================================================
+\section{\texttt{processing.txt}}
+
+All available processings that may be applied to compute processed correlations are listed in this file. Processed correlations can be computed with the code \texttt{correlation\_random.py}, which computes correlations explicitly from single station traces for individual time windows.\\[5pt]
+%
+The bandpass that may also be used as source and instrument spectrum (see \texttt{setup.txt} above) is described by its cutoff-frequencies \texttt{fmin} and \texttt{fmax}, and by the width of the linear taper \texttt{fwidth}. The remaining parameters can be set to either $0$ (processing is not applied) or $1$ (processing is applied). Their meaning is as follows: \texttt{onebit}: apply one-bit normalisation to raw recordings, \texttt{rms\_clip}: clip raw recordings above their rms value, \texttt{whiten}: apply spectral whitening to raw traces, \texttt{causal\_acausal\_average}: compute the average of the causal and acausal branches, \texttt{correlation\_normalisation}: normalise correlations for each time window by their maximum, \texttt{phase\_weighted\_stack}: compute a phase-weighted stack, instead of a linear stack. The processing is implemented by the source code \texttt{processing.py}.
+
+%====================================================================
+\section{\texttt{windows.txt}}
+
+This file contains a list of measurement windows needed for the computation of Fr\'{e}chet kernels. The first datum is the number of windows. It is followed by a listing of the windows, each line containing the left and right boundaries of a window in s, and the width of the cosine taper in s that determines the sharpness of the window. The file is read by \texttt{adsrc.py}, which is called by \texttt{kernels.py}. 
+

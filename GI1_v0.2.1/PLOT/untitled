@@ -1,0 +1,73 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import parameters
+
+
+def get_propagation_corrector(rec0=0,rec1=1,plot=0):
+
+	"""
+	propagation(idx1=0,idx2=1,average=True)
+
+	Plot time- and frequency-domain propagation corrector, and time- and frequency-domain effective
+	Green function. Requires propagation corrector files located in OUTPUT/correctors.
+
+	INPUT:
+	------
+	rec0, rec1:		indeces of the receivers used in the correlation. 
+	average: 		plot average over all receiver pairs (True or False)
+	
+
+	OUTPUT:
+	-------
+	none
+	
+	Last updated: 24 March 2016.
+	"""
+
+	#==============================================================================
+	#- Input.
+	#==============================================================================
+
+	#- Read parameters. -----------------------------------------------------------
+
+	p=parameters.Parameters()
+
+	#- Load frequency and time axes. ----------------------------------------------
+
+	fn='OUTPUT/correctors/f'
+	fid=open(fn,'r')
+	f=np.load(fid)
+	fid.close()
+
+	df=f[1]-f[0]
+	f[0]=0.01*f[1]
+
+	n=len(f)
+
+	fn='OUTPUT/correctors/t'
+	fid=open(fn,'r')
+	t=np.load(fid)
+	fid.close()
+
+	dt=t[1]-t[0]
+
+	#- Load frequency-domain propagation corrector. -------------------------------
+
+	fn='OUTPUT/correctors/g_'+str(rec0)+'_'+str(rec1)
+	fid=open(fn,'r')
+	gf=np.load(fid)
+	fid.close()
+
+	#==============================================================================
+	#- Interpolation.
+	#==============================================================================
+
+	f_interp=np.arange(p.fmin-p.fwidth,p.fmax+p.fwidth,p.df)
+
+
+	#==============================================================================
+	#- Plot.
+	#==============================================================================
+
+	plt.plot(f,np.real(gf),'k')
+	plt.show()

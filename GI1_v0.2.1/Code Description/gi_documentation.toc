@@ -1,0 +1,23 @@
+\contentsline {chapter}{\numberline {1}Structure and functionality of the programme package}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Programming language and packages}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Directory structure and basic functionality}{1}{section.1.2}
+\contentsline {chapter}{\numberline {2}Input files}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}\texttt {setup.txt}}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}\texttt {receivers.txt}}{3}{section.2.2}
+\contentsline {section}{\numberline {2.3}\texttt {correlation\_field\_and\_kernels.txt}}{3}{section.2.3}
+\contentsline {section}{\numberline {2.4}\texttt {ensemble\_correlation.txt}}{4}{section.2.4}
+\contentsline {section}{\numberline {2.5}\texttt {earthquake\_catalogue.txt}}{4}{section.2.5}
+\contentsline {section}{\numberline {2.6}\texttt {processing.txt}}{4}{section.2.6}
+\contentsline {section}{\numberline {2.7}\texttt {windows.txt}}{4}{section.2.7}
+\contentsline {chapter}{\numberline {3}Task descriptions}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Random wavefield computations}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Computing inter-station correlations from random wavefields}{5}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Computing source and propagation correctors}{5}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Computing effective correlations}{6}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Plotting source and propagation correctors}{6}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Plotting raw, processed and effective correlations}{6}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Plotting the spatial and temporal distribution of earthquakes}{6}{subsection.3.1.6}
+\contentsline {section}{\numberline {3.2}Deterministic wavefield computations}{6}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Computing inter-station correlation functions for a given power-spectral density distribution}{6}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Computing snapshots and movies of the interferometric wavefield}{6}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Computing source kernels}{7}{subsection.3.2.3}

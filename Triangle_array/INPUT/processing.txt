@@ -1,0 +1,14 @@
+#- Standard bandpass. ---------------------------
+fmin=0.5
+fmax=2.0
+fwidth=0.0005
+
+#- Single-trace processing. ---------------------
+onebit=0
+rms_clip=0
+whiten=0
+
+#- Correlation processing. ----------------------
+causal_acausal_average=0
+correlation_normalisation=0
+phase_weighted_stack=0
