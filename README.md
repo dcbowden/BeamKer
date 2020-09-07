@@ -1,7 +1,7 @@
 #### Overview
 
 The following set of notebooks are meant to accompany the paper:
-> Bowden, D. C., Sager, K., Fichtner A., Chmiel M. (in review). “Connecting Beamforming and Kernel-based Source Inversion”, Geophysical Journal International 
+> Bowden, D. C., Sager, K., Fichtner A., Chmiel M. (in review). “Connecting Beamforming and Kernel-based Source Inversion”, Geophysical Journal International
 
 These are *not* intended to reproduce every figure from the paper, but rather to be an illustrative example of some of the different methods: beamforming, Matched Field Processing, and a Noise Source Inversion (only the first iteration).
 
@@ -22,7 +22,7 @@ To get started with Jupyter notebooks, we recommend using the conda or miniconda
 We also generally recommend using different environments, separate from the base or "root" environment. To install a new environment:
 
 ```
-$ conda create -n beamforming_environment python=3.7 jupyter matplotlib numpy
+$ conda create -n beamforming_environment python=3.7 jupyter matplotlib numpy scipy
 ```
 
 In this way, other packages can be added to your workflow (e.g., obspy, asdf, pandas, cartopy), without disrupting other projects or other environments. To activate the environment and start a new Jupyter Notebook Session in your webbrowser:
