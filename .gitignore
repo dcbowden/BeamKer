@@ -1,5 +1,3 @@
 .ipynb_checkpoints
 __pycache__/
 *.pyc
-clean_start.sh
-README.md
