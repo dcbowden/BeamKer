@@ -1,18 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import parameters
+import warnings
+warnings.filterwarnings("ignore")
 
 #==============================================================================
 #- The original script, source.py, included hardcoded descriptions of various sources
-#-  as used in the GI 2016 paper. 
-#- Here we change these sources slightly and add a few new ones  
+#-  as used in the GI 2016 paper.
+#- Here we change these sources slightly and add a few new ones
 #==============================================================================
 
 def space_distribution(plot=False,save=False):
 	"""
 	S, indices = space_distribution(plot=False,save=False)
 
-	Spatial frequency-domain power-spectral density distribution mask of the noise sources. 
+	Spatial frequency-domain power-spectral density distribution mask of the noise sources.
 
 	INPUT:
 	------
@@ -622,7 +624,7 @@ def frequency_distribution(f,plot=False):
 
 	Last updated: 16 July 2019.
 	"""
-	
+
 	#==============================================================================
 	#- Initialisation.
 	#==============================================================================
@@ -699,7 +701,7 @@ def frequency_distribution(f,plot=False):
 		#- Power-spectral density for acceleration.
 		for k in range(len(f)):
 
-			if f[k]==0.0: 
+			if f[k]==0.0:
 				T[k]=100000.0
 			else:
 				T[k]=1.0/f[k]
@@ -745,7 +747,7 @@ def frequency_distribution(f,plot=False):
 		#- Power-spectral density for acceleration.
 		for k in range(len(T)):
 
-			if f[k]==0.0: 
+			if f[k]==0.0:
 				T[k]=100000.0
 			else:
 				T[k]=1.0/f[k]
@@ -761,7 +763,7 @@ def frequency_distribution(f,plot=False):
 			elif (T[k]>=15.40) & (T[k]<20.00): natural[k]=73.54-162.98*np.log10(T[k])
 			elif (T[k]>=20.00) & (T[k]<354.80): natural[k]=-151.25+10.01*np.log10(T[k])
 			elif (T[k]>=354.80) & (T[k]<100000.00): natural[k]=-206.66+31.63*np.log10(T[k])
-			
+
 		#- Convert to displacement.
 		natural=natural+40.0*np.log10(T/(2.0*np.pi))
 
