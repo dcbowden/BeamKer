@@ -17,3 +17,14 @@ rm ./Triangle_array/OUTPUT/correlations_individual/*
 rm ./Triangle_array/OUTPUT/correlations_measured/*
 rm ./Triangle_array/OUTPUT/raw_synthetics/*
 rm ./Triangle_array/OUTPUT/*pdf
+
+
+#mkdir ./Bigger_array/OUTPUT/correlations_computed/
+#mkdir ./Bigger_array/OUTPUT/correlations_individual/
+#mkdir ./Bigger_array/OUTPUT/correlations_measured/
+#mkdir ./Bigger_array/OUTPUT/raw_synthetics/
+
+#mkdir ./Triangle_array/OUTPUT/correlations_computed/
+#mkdir ./Triangle_array/OUTPUT/correlations_individual/
+#mkdir ./Triangle_array/OUTPUT/correlations_measured/
+#mkdir ./Triangle_array/OUTPUT/raw_synthetics/

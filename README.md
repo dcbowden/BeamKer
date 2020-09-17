@@ -32,4 +32,4 @@ $ conda activate beamforming_environment
 $ jupyter notebook
 ```
 
-Last updated: August 2020. For questions or suggestions: daniel.bowden@erdw.ethz.ch
+Last updated: September 2020. For questions or suggestions: daniel.bowden@erdw.ethz.ch
