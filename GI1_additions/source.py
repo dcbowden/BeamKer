@@ -4,11 +4,11 @@ import parameters
 import warnings
 warnings.filterwarnings("ignore")
 
-#==============================================================================
-#- The original script, source.py, included hardcoded descriptions of various sources
-#-  as used in the GI 2016 paper.
-#- Here we change these sources slightly and add a few new ones
-#==============================================================================
+# ==============================================================================
+# - The original script, source.py, included hardcoded descriptions of various sources
+# -  as used in the GI 2016 paper.
+# - Here we change these sources slightly and add a few new ones
+# ==============================================================================
 
 def space_distribution(plot=False,save=False):
 	"""
@@ -602,9 +602,9 @@ def space_distribution(plot=False,save=False):
 
 	return S, indices
 
-#==================================================================================
-#==================================================================================
-#==================================================================================
+# ==================================================================================
+# ==================================================================================
+# ==================================================================================
 
 def frequency_distribution(f,plot=False):
 	"""

@@ -1,7 +1,7 @@
 #### Overview
 
 The following set of notebooks are meant to accompany the paper:
-> Bowden, D. C., Sager, K., Fichtner A., Chmiel M. (in review). “Connecting Beamforming and Kernel-based Source Inversion”, Geophysical Journal International
+> Bowden, D. C., Sager, K., Fichtner A., Chmiel M. (2020). “Connecting Beamforming and Kernel-based Source Inversion”, Geophysical Journal International
 
 These are *not* intended to reproduce every figure from the paper, but rather to be an illustrative example of some of the different methods: beamforming, Matched Field Processing, and a Noise Source Inversion (only the first iteration).
 
@@ -13,9 +13,11 @@ The notebooks are in two different directories, each specifying a different arra
 
 Both directories include precomputed synthetics in ./array/OUTPUT/. These are generated with the code from Generalized Interferometery 1: https://cos.ethz.ch/software/research/gi.html. The code is included here, and notebooks "0_GI_intro_synthetics.ipynb" show how to get started, if you want to compute different synthetics by modifying an array, changing any correlation preprocessing, etc. Some of the more advanced topics in the paper, such as adjoint wavefields and a direct simulation of the noise correlation wavefield, are a part of that package (i.e., they are employed in "4_kernel_based_inversion.ipynb", but not demonstrated explicitely here).
 
+The version of the GI code included here varies slightly from the main package. Mainly, the source distributions hardcoded into "source.py" are unique to the examples here, and so a new version of "source.py" is included in the directory "GI1_additions/". Additionally, a couple other functions are added to compute all station-station pairs of correlations in a more efficient manner, and to handle time-domain shifts of waveforms.
+
 #### Installation
 
-No explicit installation is required, assuming you can run a Jupyter Python Notebook.
+No explicit installation is required, assuming you can run a Jupyter Python Notebook, with python version 3.7, matplotlib, numpy and scipy.
 
 To get started with Jupyter notebooks, we recommend using the conda or miniconda package manager: https://docs.conda.io/en/latest/miniconda.html
 
@@ -32,4 +34,8 @@ $ conda activate beamforming_environment
 $ jupyter notebook
 ```
 
-Last updated: September 2020. For questions or suggestions: daniel.bowden@erdw.ethz.ch
+Last updated: November 2020. For questions or suggestions: daniel.bowden@erdw.ethz.ch
+
+```python
+
+```
